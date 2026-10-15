@@ -27,6 +27,7 @@ unset($_SESSION['docente_nombre']);
           ?>
         </p>
         <a href="menu.php" class="btn-acceder">ACCEDER</a>
+        <a href="registrar_docente.php" class="btn-danger">Registrar (temporal)</a>
       </div>
       <div class="landing-right-logo">
         <img src="img/LogoCECSAP.png" alt="Logo Oficial CECSAP">

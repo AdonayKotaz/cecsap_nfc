@@ -4,6 +4,7 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 $base_path_sb = (strpos($_SERVER['PHP_SELF'], '/admin/') !== false) ? '../' : '';
+$base_path_docentes = (strpos($_SERVER['PHP_SELF'], '/docentes/') !== false) ? '../' : '';
 ?>
 <nav id="sidebar" class="sidebar">
   <button id="btnCerrarMenu" class="btn-cerrar">&times;</button>
@@ -15,6 +16,7 @@ $base_path_sb = (strpos($_SERVER['PHP_SELF'], '/admin/') !== false) ? '../' : ''
     <li><a href="<?= $base_path_sb ?>index.php">Inicio / Landing</a></li>
     <li><a href="<?= $base_path_sb ?>menu.php">Menú Principal</a></li>
     <li><a href="<?= $base_path_sb ?>asistencia.php">Marcaje NFC</a></li>
+    <li><a href="<?= $base_path_docentes ?>docentes.php">Docentes</a></li>
   </ul>
 </nav>
 <div id="overlay" class="overlay"></div>
