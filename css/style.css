@@ -1,0 +1,252 @@
+/* css/style.css */
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+body { background: #F7F7E8; color: #222; min-height: 100vh; display: flex; flex-direction: column; }
+
+/* Global Header */
+.app-header {
+  display: flex; justify-content: space-between; align-items: center;
+  background: #355E2B; color: #fff; padding: 16px 24px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+.app-title { font-size: 1.4rem; font-weight: 700; letter-spacing: 0.5px; }
+.btn-menu { background: none; border: none; color: #fff; font-size: 1.8rem; cursor: pointer; }
+
+/* Sidebar & Overlay */
+.sidebar {
+  position: fixed; top: 0; right: -280px; width: 280px; height: 100%;
+  background: #fff; box-shadow: -4px 0 15px rgba(0,0,0,0.15);
+  transition: right .3s ease; z-index: 20; padding: 24px;
+}
+.sidebar.abierto { right: 0; }
+.sidebar ul { list-style: none; margin-top: 40px; }
+.sidebar li { margin-bottom: 20px; border-bottom: 1px solid #e0e0e0; padding-bottom: 10px; }
+.sidebar a { text-decoration: none; color: #355E2B; font-weight: 600; font-size: 1.1rem; display: block; transition: color 0.2s; }
+.sidebar a:hover { color: #2e7d32; }
+.btn-cerrar { position: absolute; top: 16px; right: 20px; font-size: 1.8rem; background: none; border: none; cursor: pointer; color: #555; }
+
+.overlay {
+  display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.4); z-index: 10;
+  backdrop-filter: blur(2px);
+}
+.overlay.visible { display: block; }
+
+/* A) Landing / Bienvenida */
+.landing-wrapper {
+  flex: 1; display: flex; align-items: center; justify-content: center;
+  padding: 40px 20px; max-width: 1100px; margin: 0 auto; width: 100%;
+}
+.landing-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; width: 100%;
+}
+.landing-left h1 {
+  font-size: 3rem; color: #355E2B; font-weight: 800; line-height: 1.1; margin-bottom: 20px;
+}
+.landing-date {
+  font-size: 1.2rem; color: #555; margin-bottom: 30px; font-weight: 500;
+}
+.btn-acceder {
+  display: inline-block; background: #355E2B; color: #fff; padding: 14px 40px;
+  border-radius: 30px; font-size: 1.2rem; font-weight: 700; text-decoration: none;
+  box-shadow: 0 4px 12px rgba(53,94,43,0.3); transition: background 0.2s, transform 0.2s;
+}
+.btn-acceder:hover {
+  background: #284720; transform: translateY(-2px);
+}
+.landing-right-logo {
+  display: flex; align-items: center; justify-content: center; background: transparent;
+}
+.landing-right-logo img {
+  max-width: 100%; height: auto; max-height: 320px; object-fit: contain; background: transparent; border: none; box-shadow: none;
+}
+
+/* B) Menú de Selección */
+.menu-wrapper {
+  flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center;
+  padding: 40px 20px; max-width: 900px; margin: 0 auto; width: 100%;
+}
+.menu-cards-container {
+  display: flex; gap: 30px; justify-content: center; width: 100%; margin-bottom: 40px; flex-wrap: wrap;
+}
+.menu-card {
+  background: #fff; border-radius: 16px; width: 280px; padding: 40px 20px; text-align: center;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.06); text-decoration: none; color: #355E2B;
+  transition: transform 0.2s, box-shadow 0.2s; border: 1px solid #e0e6df;
+}
+.menu-card:hover {
+  transform: translateY(-5px); box-shadow: 0 10px 25px rgba(53,94,43,0.15);
+}
+.menu-card-icon {
+  width: 80px; height: 80px; margin: 0 auto 20px auto; background: #e8f5e9; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center; color: #355E2B; font-size: 2.2rem;
+}
+.menu-card h3 {
+  font-size: 1.2rem; font-weight: 700; letter-spacing: 0.5px;
+}
+.btn-salir {
+  background: #355E2B; color: #fff; padding: 12px 35px; border-radius: 25px;
+  font-weight: 700; text-decoration: none; font-size: 1rem; transition: background 0.2s;
+  box-shadow: 0 3px 10px rgba(53,94,43,0.2);
+}
+.btn-salir:hover { background: #284720; }
+
+/* C) Pantalla de Marcaje del Aula */
+.marcaje-aula-wrapper {
+  flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center;
+  padding: 40px 20px; text-align: center;
+}
+.escudo-aula {
+  width: 180px; height: auto; object-fit: contain; margin-bottom: 24px; background: transparent; border: none; box-shadow: none;
+}
+.texto-espera-aula {
+  font-size: 2.2rem; color: #355E2B; font-weight: 700; margin-top: 10px;
+}
+.nfc-input { position: absolute; opacity: 0; pointer-events: none; }
+
+.panel-resultado-aula {
+  background: #fff; border-radius: 16px; padding: 30px; max-width: 450px; width: 100%;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.1); margin: 0 auto;
+}
+.panel-resultado-aula img {
+  width: 120px; height: 120px; object-fit: cover; border-radius: 50%; margin-bottom: 16px; border: 3px solid #355E2B;
+}
+.badge {
+  display: inline-block; margin-top: 12px; padding: 6px 18px;
+  border-radius: 20px; font-weight: 700; color: #fff;
+}
+.badge.presente { background: #2e7d32; }
+.badge.desconocida { background: #c62828; }
+
+/* D) Portal Docente & Reportes */
+.docente-container {
+  max-width: 1000px; margin: 30px auto; padding: 0 16px; width: 100%; flex: 1;
+}
+.docente-card {
+  background: #fff; border-radius: 16px; padding: 30px; box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+}
+.tabs-navegacion {
+  display: flex; gap: 12px; margin-bottom: 24px; border-bottom: 2px solid #eee; padding-bottom: 12px;
+}
+.tab-btn {
+  background: #e8f5e9; color: #355E2B; padding: 10px 20px; border-radius: 8px;
+  text-decoration: none; font-weight: 700; transition: background 0.2s, color 0.2s;
+}
+.tab-btn.active, .tab-btn:hover {
+  background: #355E2B; color: #fff;
+}
+
+table { width: 100%; border-collapse: collapse; margin-top: 16px; background: #fff; border-radius: 8px; overflow: hidden; }
+th, td { padding: 12px 16px; border-bottom: 1px solid #e0e0e0; text-align: left; }
+th { background: #355E2B; color: #fff; font-weight: 600; }
+tr:hover { background: #f9fbf9; }
+
+/* Responsive adjustments */
+@media(max-width: 768px) {
+  .landing-grid { grid-template-columns: 1fr; text-align: center; }
+  .landing-left h1 { font-size: 2.2rem; }
+  .landing-right-logo { display: none; }
+}
+
+/* Login Page Specific Layout */
+.login-page-body {
+  background: #F7F7E8;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+.login-card-container {
+  background: #fff;
+  max-width: 850px;
+  width: 100%;
+  border-radius: 24px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  padding: 40px;
+  align-items: center;
+}
+.login-form-col {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.login-form-col h2 {
+  color: #355E2B;
+  font-size: 1.8rem;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+}
+.login-subtitle {
+  color: #666;
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+.login-input {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 12px 16px;
+  font-size: 1rem;
+  width: 100%;
+  outline: none;
+  transition: border-color 0.2s;
+}
+.login-input:focus {
+  border-color: #355E2B;
+  box-shadow: 0 0 0 2px rgba(53,94,43,0.15);
+}
+.login-btn {
+  background: #355E2B;
+  color: #fff;
+  border: none;
+  border-radius: 25px;
+  padding: 14px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  width: 100%;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 12px rgba(53,94,43,0.25);
+  transition: background 0.2s, transform 0.2s;
+}
+.login-btn:hover {
+  background: #284720;
+  transform: translateY(-1px);
+}
+.login-img-col {
+  width: 100%;
+  height: 100%;
+  min-height: 320px;
+  display: flex;
+}
+.login-img-col img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 20px;
+}
+@media(max-width: 768px) {
+  .login-card-container {
+    grid-template-columns: 1fr;
+    padding: 24px;
+  }
+  .login-img-col {
+    display: none;
+  }
+}
+
+/* Icon classes */
+.menu-icon {
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+}
+.icon-hamburguesa {
+  width: 30px;
+  height: auto;
+  object-fit: contain;
+  vertical-align: middle;
+  cursor: pointer;
+}
